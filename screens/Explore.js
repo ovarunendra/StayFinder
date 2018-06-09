@@ -76,7 +76,7 @@ class Explore extends Component {
                                 underlineColorAndroid="transparent"
                                 placeholder="Try New Delhi"
                                 placeholderTextColor="grey"
-                                style={{ flex: 1, fontWeight: '700', backgroundColor: 'white' }}
+                                style={{ paddingVertical: -10, flex: 1, fontWeight: '700', backgroundColor: 'white' }}
                             />
                         </View>
                         <Animated.View
