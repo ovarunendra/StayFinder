@@ -1,58 +1,71 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+import { createBottomTabNavigator } from 'react-navigation';
+import Icon from 'react-native-vector-icons/Ionicons';
 
-type Props = {};
-export default class App extends Component<Props> {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
-      </View>
-    );
+import Explore from './screens/Explore';
+import Saved from './screens/Saved';
+import Trips from './screens/Trips';
+import Inbox from './screens/Inbox';
+import Profile from './screens/Profile';
+
+export default createBottomTabNavigator({
+  Explore: {
+    screen: Explore,
+    navigationOptions: {
+      tabBarLabel: 'EXPLORE',
+      tabBarIcon: ({ tintColor }) => (
+        <Icon name="ios-search-outline" color={tintColor} size={24} />
+      )
+    }
+  },
+  Saved: {
+    screen: Saved,
+    navigationOptions: {
+      tabBarLabel: 'SAVED',
+      tabBarIcon: ({ tintColor }) => (
+        <Icon name="ios-heart-outline" color={tintColor} size={24} />
+      )
+    }
+  },
+  Trips: {
+    screen: Trips,
+    navigationOptions: {
+      tabBarLabel: 'TRIPS',
+      tabBarIcon: ({ tintColor }) => (
+        <Icon name="ios-home-outline" color={tintColor} size={24} />
+      )
+    }
+  },
+  Inbox: {
+    screen: Inbox,
+    navigationOptions: {
+      tabBarLabel: 'INBOX',
+      tabBarIcon: ({ tintColor }) => (
+        <Icon name="ios-chatboxes-outline" color={tintColor} size={24} />
+      )
+    }
+  },
+  Profile: {
+    screen: Profile,
+    navigationOptions: {
+      tabBarLabel: 'PROFILE',
+      tabBarIcon: ({ tintColor }) => (
+        <Icon name="ios-person-outline" color={tintColor} size={24} />
+      )
+    }
+  },
+}, {
+  tabBarOptions: {
+    activeTintColor: 'red',
+    inactiveTintColor: 'grey',
+    style: {
+      backgroundColor: 'white',
+      borderTopWidth: 0,
+      shadowOffset: { width: 5, height: 3 },
+      shadowColor: 'black',
+      shadowOpacity: 0.5,
+      elevation: 5
+    }
   }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
 });
